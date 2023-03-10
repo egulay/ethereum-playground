@@ -1,5 +1,7 @@
-const Hello = artifacts.require("Hello");
+const Hello = artifacts.require('Hello');
+const Pokemon = artifacts.require('Pokemon')
 
 module.exports = function (deployer) {
-  deployer.deploy(Hello);
+    deployer.deploy(Hello);
+    deployer.deploy(Pokemon, 'Pikachu', 1, 88888);
 };

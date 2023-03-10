@@ -61,6 +61,14 @@ contract Pokemon {
         emit PriceChanged(_newPrice);
     }
 
+    function getPokemon() public view returns (address, string memory, uint256, uint256) {
+        return (owner, name, level, price);
+    }
+
+    function getPrice() public view returns (uint256) {
+        return price;
+    }
+
     function buyPokemon() public payable {
         require(msg.sender != owner, "You already own this Pokemon");
         require(msg.value == price, "The price does not match the value sent");
