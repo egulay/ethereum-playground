@@ -20,4 +20,4 @@ async function run() {
         web3.currentProvider.connection.close();
 }
 
-run();
+run().then(() => console.log('Completed'));
