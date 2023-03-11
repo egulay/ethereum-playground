@@ -14,10 +14,12 @@ contract Pokemon {
     event PriceChanged(uint256 newPrice);
     event Sold(address oldOwner, address newOwner, uint256 price);
 
-    constructor(string memory _name, uint256 _level, uint256 _price) {
+    constructor(string memory _name, uint256 _level, uint256 _health, address _opponent, uint256 _price) {
         name = _name;
         level = _level;
         owner = msg.sender;
+        opponent = _opponent;
+        health = _health;
         price = _price;
     }
 
