@@ -14,13 +14,10 @@ contract Pokemon {
     event PriceChanged(uint256 newPrice);
     event Sold(address oldOwner, address newOwner, uint256 price);
 
-    constructor(string memory _name, uint256 _level, uint256 _health, address _opponent, uint256 _price) {
+    constructor(string memory _name, uint256 _level) {
         name = _name;
         level = _level;
         owner = msg.sender;
-        opponent = _opponent;
-        health = _health;
-        price = _price;
     }
 
     function setLevel(uint256 _newLevel) public {
@@ -40,9 +37,9 @@ contract Pokemon {
         health = level * 10;
     }
 
-    function battle() public returns (string memory) {
+    function battle(uint256 _opponentLevel) public returns (string memory) {
         require(msg.sender == opponent, "You are not the opponent");
-        uint256 opponentHealth = level * 10;
+        uint256 opponentHealth = _opponentLevel * 10;
         if (health > opponentHealth) {
             emit Battle(name, "Opponent", health);
             return "You won the battle!";
